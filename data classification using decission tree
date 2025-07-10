@@ -1,0 +1,23 @@
+# decision_tree_classifier.py
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+# Step 1: Sample data
+# Example: Predict if a person buys a computer based on age and income
+data = {
+'Age': [25, 30, 45, 35, 22, 40, 28, 36],
+'Income': [50000, 60000, 80000, 120000, 30000, 100000, 75000, 90000],
+'Buys_Computer': ['No', 'No', 'Yes', 'Yes', 'No', 'Yes', 'No', 'Yes']
+
+}
+# Step 2: Create DataFrame
+df = pd.DataFrame(data)
+# Step 3: Prepare features and target
+X = df[['Age', 'Income']] # Features
+y = df['Buys_Computer'] # Target
+# Step 4: Train Decision Tree Classifier
+model = DecisionTreeClassifier()
+model.fit(X, y)
+# Step 5: Predict for a new person
+new_data = [[29, 70000]] # Age: 29, Income: 70,000
+prediction = model.predict(new_data)
+print(f"Prediction for Age=29 and Income=70000: {prediction[0]}")
